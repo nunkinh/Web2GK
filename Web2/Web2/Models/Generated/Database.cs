@@ -1,4 +1,4 @@
-﻿
+
 
 
 
@@ -24,9 +24,9 @@
 // 
 // The following connection settings were used to generate this file
 // 
-//     Connection String Name: `PhoneConnection`
+//     Connection String Name: `CellPhoneConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=.;Initial Catalog=Phone;Integrated Security=True`
+//     Connection String:      `Data Source=.;Initial Catalog=CellPhone;Integrated Security=True`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -38,18 +38,18 @@ using System.Linq;
 using System.Web;
 using PetaPoco;
 
-namespace PhoneConnection
+namespace CellPhoneConnection
 {
 
-	public partial class PhoneConnectionDB : Database
+	public partial class CellPhoneConnectionDB : Database
 	{
-		public PhoneConnectionDB() 
-			: base("PhoneConnection")
+		public CellPhoneConnectionDB() 
+			: base("CellPhoneConnection")
 		{
 			CommonConstruct();
 		}
 
-		public PhoneConnectionDB(string connectionStringName) 
+		public CellPhoneConnectionDB(string connectionStringName) 
 			: base(connectionStringName)
 		{
 			CommonConstruct();
@@ -59,11 +59,11 @@ namespace PhoneConnection
 		
 		public interface IFactory
 		{
-			PhoneConnectionDB GetInstance();
+			CellPhoneConnectionDB GetInstance();
 		}
 		
 		public static IFactory Factory { get; set; }
-        public static PhoneConnectionDB GetInstance()
+        public static CellPhoneConnectionDB GetInstance()
         {
 			if (_instance!=null)
 				return _instance;
@@ -71,10 +71,10 @@ namespace PhoneConnection
 			if (Factory!=null)
 				return Factory.GetInstance();
 			else
-				return new PhoneConnectionDB();
+				return new CellPhoneConnectionDB();
         }
 
-		[ThreadStatic] static PhoneConnectionDB _instance;
+		[ThreadStatic] static CellPhoneConnectionDB _instance;
 		
 		public override void OnBeginTransaction()
 		{
@@ -91,7 +91,7 @@ namespace PhoneConnection
 
 		public class Record<T> where T:new()
 		{
-			public static PhoneConnectionDB repo { get { return PhoneConnectionDB.GetInstance(); } }
+			public static CellPhoneConnectionDB repo { get { return CellPhoneConnectionDB.GetInstance(); } }
 			public bool IsNew() { return repo.IsNew(this); }
 			public object Insert() { return repo.Insert(this); }
 
@@ -137,43 +137,29 @@ namespace PhoneConnection
 
     
 
-	[TableName("dbo.ChiTietDH")]
+	[TableName("dbo.LoaiSanPham")]
+
+
+
+	[PrimaryKey("a_IDLoaiSP")]
 
 
 
 
 	[ExplicitColumns]
 
-    public partial class ChiTietDH : PhoneConnectionDB.Record<ChiTietDH>  
+    public partial class LoaiSanPham : CellPhoneConnectionDB.Record<LoaiSanPham>  
     {
 
 
 
-		[Column] public int? MaDH { get; set; }
+		[Column] public int a_IDLoaiSP { get; set; }
 
 
 
 
 
-		[Column] public string MaSP { get; set; }
-
-
-
-
-
-		[Column] public int? SoLuong { get; set; }
-
-
-
-
-
-		[Column] public string DonGia { get; set; }
-
-
-
-
-
-		[Column] public int? TongTien { get; set; }
+		[Column] public string a_TenLoaiSP { get; set; }
 
 
 
@@ -181,239 +167,25 @@ namespace PhoneConnection
 
     
 
-	[TableName("dbo.ChungLoai")]
-
-
-
-	[PrimaryKey("MaCL", AutoIncrement=false)]
-
-
-	[ExplicitColumns]
-
-    public partial class ChungLoai : PhoneConnectionDB.Record<ChungLoai>  
-    {
-
-
-
-		[Column] public int MaCL { get; set; }
-
-
-
-
-
-		[Column] public string TenCL { get; set; }
-
-
-
-	}
-
-    
-
-	[TableName("dbo.Comment")]
-
-
-
-	[PrimaryKey("IDCmt")]
+	[TableName("dbo.NhaSanXuat")]
 
 
 
 
 	[ExplicitColumns]
 
-    public partial class Comment : PhoneConnectionDB.Record<Comment>  
+    public partial class NhaSanXuat : CellPhoneConnectionDB.Record<NhaSanXuat>  
     {
 
 
 
-		[Column] public int IDCmt { get; set; }
+		[Column] public int a_IDNhaSX { get; set; }
 
 
 
 
 
-		[Column] public string NguoiDungCmt { get; set; }
-
-
-
-
-
-		[Column] public string NoiDung { get; set; }
-
-
-
-
-
-		[Column] public string MaSP { get; set; }
-
-
-
-	}
-
-    
-
-	[TableName("dbo.DonDatHang")]
-
-
-
-	[PrimaryKey("MaDH")]
-
-
-
-
-	[ExplicitColumns]
-
-    public partial class DonDatHang : PhoneConnectionDB.Record<DonDatHang>  
-    {
-
-
-
-		[Column] public int MaDH { get; set; }
-
-
-
-
-
-		[Column] public string NguoiDungname { get; set; }
-
-
-
-
-
-		[Column] public DateTime? NgayDatHang { get; set; }
-
-
-
-
-
-		[Column] public string HoTen { get; set; }
-
-
-
-
-
-		[Column] public string SDT { get; set; }
-
-
-
-
-
-		[Column] public string DiaChi { get; set; }
-
-
-
-
-
-		[Column] public string Email { get; set; }
-
-
-
-
-
-		[Column] public int? TinhTrang { get; set; }
-
-
-
-
-
-		[Column] public string GhiChu { get; set; }
-
-
-
-
-
-		[Column] public int? Tongtien { get; set; }
-
-
-
-	}
-
-    
-
-	[TableName("dbo.Loai")]
-
-
-
-	[PrimaryKey("MaLoai", AutoIncrement=false)]
-
-
-	[ExplicitColumns]
-
-    public partial class Loai : PhoneConnectionDB.Record<Loai>  
-    {
-
-
-
-		[Column] public string MaLoai { get; set; }
-
-
-
-
-
-		[Column] public string TenLoai { get; set; }
-
-
-
-
-
-		[Column] public int? MaCL { get; set; }
-
-
-
-	}
-
-    
-
-	[TableName("dbo.NguoiDung")]
-
-
-
-	[PrimaryKey("NguoiDungName", AutoIncrement=false)]
-
-
-	[ExplicitColumns]
-
-    public partial class NguoiDung : PhoneConnectionDB.Record<NguoiDung>  
-    {
-
-
-
-		[Column] public string NguoiDungName { get; set; }
-
-
-
-
-
-		[Column] public string Password { get; set; }
-
-
-
-
-
-		[Column] public string HoTen { get; set; }
-
-
-
-
-
-		[Column] public string Email { get; set; }
-
-
-
-
-
-		[Column] public string DienThoai { get; set; }
-
-
-
-
-
-		[Column] public string DiaChi { get; set; }
-
-
-
-
-
-		[Column] public int Admin { get; set; }
+		[Column] public string a_TenNhaSX { get; set; }
 
 
 
@@ -425,65 +197,67 @@ namespace PhoneConnection
 
 
 
-	[PrimaryKey("MaSP", AutoIncrement=false)]
+	[PrimaryKey("a_ID")]
+
+
 
 
 	[ExplicitColumns]
 
-    public partial class SanPham : PhoneConnectionDB.Record<SanPham>  
+    public partial class SanPham : CellPhoneConnectionDB.Record<SanPham>  
     {
 
 
 
-		[Column] public string MaSP { get; set; }
+		[Column] public int a_ID { get; set; }
 
 
 
 
 
-		[Column] public string TenSP { get; set; }
+		[Column] public string a_TenSP { get; set; }
 
 
 
 
 
-		[Column] public string Gia { get; set; }
+		[Column] public int a_HangSanXuat { get; set; }
 
 
 
 
 
-		[Column] public string MoTa { get; set; }
+		[Column] public int a_LoaiSanPham { get; set; }
 
 
 
 
 
-		[Column] public string LoaiSP { get; set; }
+		[Column] public int? a_Gia { get; set; }
 
 
 
 
 
-		[Column] public string Hinh { get; set; }
+		[Column] public string a_MoTa { get; set; }
 
 
 
 
 
-		[Column] public string HeDieuHanh { get; set; }
+		[Column] public int? a_LuotXem { get; set; }
 
 
 
 
 
-		[Column] public int? LuotXem { get; set; }
+		[Column] public string a_Img { get; set; }
 
 
 
 
 
-		[Column] public DateTime? NgayDangSP { get; set; }
+		[Column] public int a_TinhTrang { get; set; }
 
 
 

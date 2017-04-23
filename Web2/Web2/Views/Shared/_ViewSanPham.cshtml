@@ -29,6 +29,22 @@
     <link rel="stylesheet" href="~/Assets/css/style.css">
     <link rel="stylesheet" href="~/Assets/css/responsive.css">
 
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Assets/css/style_templatet2.css">
+
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="~/Assets/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/fonts/font-slider.css" type="text/css">
+
+    <!-- jQuery and Modernizr-->
+    <script src="js/jquery-2.1.1.js"></script>
+
+    <!-- Core JavaScript Files -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/photo-gallery.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -111,9 +127,10 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li class="active">@Html.ActionLink("Phone", "Index", "SanPham")</li>
-                        <li>@Html.ActionLink("Single Product", "Details", "SanPham")</li>
+                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                        @*<li>@Html.ActionLink("Phone", "Index", "SanPham")</li>*@
+                        @Html.Partial("_NhaSanXuatPartial", Web2.Models.BUS.NhaSanXuatBUS.DanhSach())
+                        @*<li>@Html.ActionLink("Single Product", "Details", "SanPham")</li>*@
                         <li><a href="cart.html">Cart</a></li>
                         <li><a href="checkout.html">Checkout</a></li>
                         <li><a href="#">Category</a></li>

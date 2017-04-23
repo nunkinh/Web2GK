@@ -79,4 +79,8 @@ c:\users\uongkinh\documents\visual studio 2015\Projects\Web2\Web2\bin\Microsoft.
 c:\users\uongkinh\documents\visual studio 2015\Projects\Web2\Web2\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 c:\users\uongkinh\documents\visual studio 2015\Projects\Web2\Web2\obj\Debug\Web2.dll
 c:\users\uongkinh\documents\visual studio 2015\Projects\Web2\Web2\obj\Debug\Web2.pdb
-C:\Users\uongkinh\documents\visual studio 2015\Projects\Web2\Web2\obj\Debug\Web2.csprojResolveAssemblyReference.cache
+C:\Users\uongkinh\Documents\Visual Studio 2015\Projects\Web2\Web2\obj\Debug\Web2.csprojResolveAssemblyReference.cache
+C:\Users\uongkinh\Documents\Visual Studio 2015\Projects\Web2\Web2\bin\PagedList.dll
+C:\Users\uongkinh\Documents\Visual Studio 2015\Projects\Web2\Web2\bin\PagedList.Mvc.dll
+C:\Users\uongkinh\Documents\Visual Studio 2015\Projects\Web2\Web2\bin\PagedList.xml
+C:\Users\uongkinh\Documents\Visual Studio 2015\Projects\Web2\Web2\bin\PagedList.Mvc.xml

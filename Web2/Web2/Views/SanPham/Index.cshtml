@@ -1,52 +1,43 @@
-﻿@model List<PhoneConnection.SanPham>
+﻿@model PagedList.IPagedList<CellPhoneConnection.SanPham>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ViewSanPham.cshtml";
 }
 
 
-<div class="zigzag-bottom"></div>
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model)
-        {
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
 
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="~/Assets/img/product-2.jpg" alt="@item.MoTa">
-                    </div>
-                    <h4><a href="@Url.Action("Details", "SanPham", new { id = 1 })">@item.TenSP</a></h4>
-                    <div class="product-carousel-price">
-                        <ins>@item.Gia</ins> <del>@item.Gia</del>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-shop-product">
+                        <div class="product-upper">
+                            <img style="height:243px; width: 195px" src="~/Assets/img/Products/@item.a_ID/MainImg.png" alt="@item.a_TenSP">
+                        </div>
+                        <h4><a href="@Url.Action("Details", "SanPham", new { id = @item.a_ID })">@item.a_TenSP</a></h4>
+                        <div class="product-carousel-price">
+                            <ins>@item.a_Gia</ins> <del>@item.a_Gia</del>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="product-pagination text-center">
-                <nav>
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-pagination text-center">
+                    <nav>
+                        <ul class="pagination">
+
+                   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))     
+
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>

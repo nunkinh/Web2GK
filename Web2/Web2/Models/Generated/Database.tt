@@ -1,7 +1,7 @@
 <#@ include file="PetaPoco.Core.ttinclude" #>
 <#
 	// Settings
-    ConnectionStringName = "PhoneConnection";			// Uses last connection string in config if not specified
+    ConnectionStringName = "CellPhoneConnection";			// Uses last connection string in config if not specified
     Namespace = "";
     RepoName = "";
     GenerateOperations = true;

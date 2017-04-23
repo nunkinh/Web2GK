@@ -77,6 +77,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -198,12 +206,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NhaSanXuatController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BUS\SanPhamBus.cs" />
+    <Compile Include="Models\BUS\LoaiSanPhamBUS.cs" />
+    <Compile Include="Models\BUS\NhaSanXuatBUS.cs" />
+    <Compile Include="Models\BUS\SanPhamBUS.cs" />
     <Compile Include="Models\Generated\Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -216,8 +227,52 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\bootstrap.min_template2.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\owl.carousel.css" />
+    <Content Include="Assets\css\responsive.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\css\style_templatet2.css" />
+    <Content Include="Assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\fonts\font-slider.css" />
+    <Content Include="Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\img\close.png" />
+    <Content Include="Assets\img\discover-curved-32px.png" />
+    <Content Include="Assets\img\galaxy-note-1.jpg" />
+    <Content Include="Assets\img\galaxy-note-2.jpg" />
+    <Content Include="Assets\img\galaxy-note-3.jpg" />
+    <Content Include="Assets\img\galaxy-note-4.jpg" />
+    <Content Include="Assets\img\galaxy-note.jpg" />
+    <Content Include="Assets\img\galaxy-s4.jpg" />
+    <Content Include="Assets\img\iphone.png" />
+    <Content Include="Assets\img\loading.gif" />
+    <Content Include="Assets\img\logofooter.png" />
+    <Content Include="Assets\img\maestro-curved-32px.png" />
+    <Content Include="Assets\img\main-banner1-1903x600.jpg" />
+    <Content Include="Assets\img\main-banner2-1903x600.jpg" />
+    <Content Include="Assets\img\main-banner3-1903x600.jpg" />
+    <Content Include="Assets\img\next.png" />
+    <Content Include="Assets\img\paypal-curved-32px.png" />
+    <Content Include="Assets\img\prev.png" />
+    <Content Include="Assets\img\sub-banner1.png" />
+    <Content Include="Assets\img\sub-banner2.png" />
+    <Content Include="Assets\img\sub-banner3.png" />
+    <Content Include="Assets\img\sub-banner4.jpg" />
+    <Content Include="Assets\img\sub-banner5.png" />
+    <Content Include="Assets\img\visa-curved-32px.png" />
+    <Content Include="Assets\img\Z1.png" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\html5shiv.js" />
+    <Content Include="Assets\js\jquery-2.1.1.js" />
+    <Content Include="Assets\js\photo-gallery.js" />
+    <Content Include="Assets\js\respond.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -235,6 +290,43 @@
     </Content>
     <Content Include="Models\Generated\PetaPoco.Generator.ttinclude" />
     <Content Include="Models\Generated\PetaPoco.Core.ttinclude" />
+    <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Assets\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Assets\font-awesome\less\core.less" />
+    <Content Include="Assets\font-awesome\less\fixed-width.less" />
+    <Content Include="Assets\font-awesome\less\font-awesome.less" />
+    <Content Include="Assets\font-awesome\less\icons.less" />
+    <Content Include="Assets\font-awesome\less\larger.less" />
+    <Content Include="Assets\font-awesome\less\list.less" />
+    <Content Include="Assets\font-awesome\less\mixins.less" />
+    <Content Include="Assets\font-awesome\less\path.less" />
+    <Content Include="Assets\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Assets\font-awesome\less\spinning.less" />
+    <Content Include="Assets\font-awesome\less\stacked.less" />
+    <Content Include="Assets\font-awesome\less\variables.less" />
+    <Content Include="Assets\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Assets\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Assets\font-awesome\scss\_core.scss" />
+    <Content Include="Assets\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Assets\font-awesome\scss\_icons.scss" />
+    <Content Include="Assets\font-awesome\scss\_larger.scss" />
+    <Content Include="Assets\font-awesome\scss\_list.scss" />
+    <Content Include="Assets\font-awesome\scss\_mixins.scss" />
+    <Content Include="Assets\font-awesome\scss\_path.scss" />
+    <Content Include="Assets\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Assets\font-awesome\scss\_spinning.scss" />
+    <Content Include="Assets\font-awesome\scss\_stacked.scss" />
+    <Content Include="Assets\font-awesome\scss\_variables.scss" />
+    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\fonts\FontAwesome.otf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -284,15 +376,47 @@
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\Shared\_ViewSanPham.cshtml" />
     <Content Include="Views\SanPham\Index.cshtml" />
-    <Content Include="Views\Shared\_MainLayoutSanPham.cshtml" />
     <Content Include="Views\SanPham\Details.cshtml" />
+    <Content Include="Views\Shared\_NhaSanXuatPartial.cshtml" />
+    <Content Include="Views\NhaSanXuat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\css\" />
-    <Folder Include="Assets\fonts\" />
-    <Folder Include="Assets\img\" />
-    <Folder Include="Assets\js\" />
+    <Folder Include="Assets\img\Products\10\" />
+    <Folder Include="Assets\img\Products\11\" />
+    <Folder Include="Assets\img\Products\12\" />
+    <Folder Include="Assets\img\Products\13\" />
+    <Folder Include="Assets\img\Products\14\" />
+    <Folder Include="Assets\img\Products\15\" />
+    <Folder Include="Assets\img\Products\17\" />
+    <Folder Include="Assets\img\Products\18\" />
+    <Folder Include="Assets\img\Products\19\" />
+    <Folder Include="Assets\img\Products\20\" />
+    <Folder Include="Assets\img\Products\21\" />
+    <Folder Include="Assets\img\Products\22\" />
+    <Folder Include="Assets\img\Products\23\" />
+    <Folder Include="Assets\img\Products\24\" />
+    <Folder Include="Assets\img\Products\25\" />
+    <Folder Include="Assets\img\Products\26\" />
+    <Folder Include="Assets\img\Products\27\" />
+    <Folder Include="Assets\img\Products\28\" />
+    <Folder Include="Assets\img\Products\29\" />
+    <Folder Include="Assets\img\Products\30\" />
+    <Folder Include="Assets\img\Products\31\" />
+    <Folder Include="Assets\img\Products\32\" />
+    <Folder Include="Assets\img\Products\33\" />
+    <Folder Include="Assets\img\Products\34\" />
+    <Folder Include="Assets\img\Products\35\" />
+    <Folder Include="Assets\img\Products\36\" />
+    <Folder Include="Assets\img\Products\37\" />
+    <Folder Include="Assets\img\Products\38\" />
+    <Folder Include="Assets\img\Products\3\" />
+    <Folder Include="Assets\img\Products\4\" />
+    <Folder Include="Assets\img\Products\5\" />
+    <Folder Include="Assets\img\Products\6\" />
+    <Folder Include="Assets\img\Products\7\" />
+    <Folder Include="Assets\img\Products\8\" />
+    <Folder Include="Assets\img\Products\9\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

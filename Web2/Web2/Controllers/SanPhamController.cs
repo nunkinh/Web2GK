@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,16 +11,16 @@ namespace Web2.Controllers
     public class SanPhamController : Controller
     {
         // GET: SanPham
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 8)
         {
-            var dsSanPham = SanPhamBus.DanhSach();
+            var dsSanPham = SanPhamBus.DanhSach().ToPagedList(page, pageSize);
             return View(dsSanPham);
         }
 
         // GET: SanPham/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(SanPhamBus.ChiTiet(id));
         }
 
         // GET: SanPham/Create

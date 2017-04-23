@@ -110,8 +110,9 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Phone", "Index", "SanPham")</li>
-                        <li>@Html.ActionLink("Single Product", "Details", "SanPham")</li>
+                        @*<li>@Html.ActionLink("Phone", "Index", "SanPham")</li>*@
+                        @Html.Partial("_NhaSanXuatPartial", Web2.Models.BUS.NhaSanXuatBUS.DanhSach())
+                        @*<li>@Html.ActionLink("Single Product", "Details", "SanPham")</li>*@
                         <li><a href="cart.html">Cart</a></li>
                         <li><a href="checkout.html">Checkout</a></li>
                         <li><a href="#">Category</a></li>
